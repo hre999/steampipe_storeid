@@ -12,8 +12,8 @@
 using namespace std;
 
 int main() {
-	const regex valve = regex("valve[0-9]+\\.steampipe\\.steamcontent\\.com/depot/");
-	const string internal = "steampipe.steamcontent.squid.internal/depot/";
+	const regex valve = regex("valve[0-9]+\\.steamcontent\\.com/depot/");
+	const string internal = "steamcontent.squid.internal/depot/";
 	string line;
 
 	while (getline(cin,line, '?')) {	// since all requests contain parameters, we can just use the ? as a delimiter and discard the rest
