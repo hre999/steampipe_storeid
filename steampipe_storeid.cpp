@@ -12,13 +12,15 @@
 using namespace std;
 
 int main() {
-	const regex valve = regex("valve[0-9]+\\.steamcontent\\.com/depot/");
+	//const regex valve = regex("valve[0-9]+\\.steamcontent\\.com/depot/");
+	const regex valve = regex("cache[0-9]+-[a-z0-9]+\\.steamcontent\\.com/depot/");
 	const string internal = "steamcontent.squid.internal/depot/";
 	string line;
 
-	while (getline(cin,line, '?')) {	// since all requests contain parameters, we can just use the ? as a delimiter and discard the rest
-		cin.ignore(10000, '\n');
-		cout << "OK store-id=" << regex_replace(line, valve, internal) << endl;
+	while (getline(cin,line, '\n')) {
+		if (line == "quit") exit(0);
+		if (line.find('?') != std::string::npos) line.resize(line.find('?'));	// discard the parameters
+		cout << "OK store-id=" << regex_replace(line, valve, internal) << endl;	// and substitute internal name
 	};
 
 	return 0;
